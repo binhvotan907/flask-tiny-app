@@ -5,7 +5,8 @@
 ### __2. Viết file Readme.MD chứa các thông tin sau:__   
 a. Thông tin cá nhân (Họ tên, mã sinh viên)    
 - Võ Tấn Bình - 22665691    
-- Nguyễn Phạm Chí Bảo - 22678881    
+- Nguyễn Phạm Chí Bảo - 22678881
+      
 b. Mô tả project  
 > Flask Tiny App là một ứng dụng web nhỏ được xây dựng bằng Flask. Mục tiêu của dự án là tạo một hệ thống quản lý người dùng và bài viết/nhiệm vụ với các chức năng cơ bản như:  
 - Đăng ký, đăng nhập: Cho phép người dùng tạo tài khoản và đăng nhập vào hệ thống.  
