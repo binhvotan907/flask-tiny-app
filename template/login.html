@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Flask Tiny App{% endblock %}
+
+{% block content %}
+    <h2>Login</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+        {{ form.hidden_tag() }}
+
+        <div>
+            <label for="username">Username</label>
+            {{ form.username(class="form-control") }}
+            {% if form.username.errors %}
+                <span class="error">{{ form.username.errors[0] }}</span>
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            {{ form.password(class="form-control") }}
+            {% if form.password.errors %}
+                <span class="error">{{ form.password.errors[0] }}</span>
+            {% endif %}
+        </div>
+
+        <div>
+            {{ form.remember_me() }} <label for="remember_me">Remember Me</label>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+{% endblock %}
