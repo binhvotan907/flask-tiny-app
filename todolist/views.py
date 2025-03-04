@@ -64,7 +64,7 @@ def delete_note():
 def update_note():
     data = request.get_json()
     note_id = data.get("note_id")
-    new_data = data.get("new_data")
+    new_data = data.get("data")
 
     if not note_id or not new_data:
         return jsonify({"success": False, "message": "Thiếu thông tin ghi chú"}), 400
