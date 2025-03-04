@@ -1,22 +1,51 @@
-# flask-tiny-app
+# Flask Tiny App - ToDoList
+## 1. Tạo một github repo có tên flask-tiny-app
+## 2. Viết file Readme.MD chứa các thông tin sau:
+**a. Thông tin cá nhân**
 
-## **THỰC HÀNH PHÁT TRIỂN ỨNG DỤNG - EX01** <br>
+👤 **Võ Tấn Bình** -  **MSSV: 22665691**  
+👤 **Nguyễn Phạm Chí Bảo** -  **MSSV: 22678881**
 
-### **1. Tạo một github repo có tên flask-tiny-app**
+---
+**b. Mô tả dự án**
 
-### **2. Viết file Readme.MD chứa các thông tin sau:**
+**📖 Giới thiệu**
+**Flask Tiny App** là một ứng dụng web giúp người dùng ghi chú lại những công việc hằng ngày một cách hiệu quả.  
+**🚀 Tính năng**
 
-a. Thông tin cá nhân (Họ tên, mã sinh viên)
+- 📝 **Đăng ký tài khoản**
+- 🔑 **Đăng nhập và quản lý tài khoản**
+- ✍️ **Thêm, xóa ghi chú**  
+- 🎨 **Giao diện thân thiện và dễ sử dụng**
 
-- Võ Tấn Bình - 22665691
-- Nguyễn Phạm Chí Bảo - 22678881
+Ứng dụng được phát triển bằng **Flask**, sử dụng **SQLite** làm cơ sở dữ liệu, đồng thời tích hợp giao diện thân thiện với **Bootstrap/TailwindCSS**.
 
-b. Mô tả project
+---
 
-> Flask Tiny App là một ứng dụng web nhỏ được xây dựng bằng Flask. Mục tiêu của dự án là tạo một hệ thống quản lý người dùng và bài viết/nhiệm vụ với các chức năng cơ bản như:
+**c. Hướng dẫn cài đặt và chạy dự án**
 
-- Đăng ký, đăng nhập: Cho phép người dùng tạo tài khoản và đăng nhập vào hệ thống.
-- Quản lý người dùng (Admin Panel): Admin có thể khóa/mở khóa tài khoản của người dùng và đặt lại mật khẩu.
-- Quản lý bài viết/nhiệm vụ: Người dùng có thể tạo, chỉnh sửa, xóa và thực hiện thao tác xóa nhiều bài viết/nhiệm vụ cùng lúc.
-- Phân trang (Pagination): Hỗ trợ hiển thị danh sách bài viết/nhiệm vụ với giới hạn số lượng trên mỗi trang.
-- Triển khai với Docker: Ứng dụng sẽ được đóng gói và triển khai bằng Docker để dễ dàng cài đặt và chạy trên nhiều môi trường.
+### 📌 Yêu cầu hệ thống
+- Python >= 3.8
+- Pip (trình quản lý package của Python)
+
+### 🛠 Cài đặt và chạy ứng dụng
+
+1. **Clone repository về máy**
+   ```bash
+   git clone https://github.com/binhvotan907/flask-tiny-app
+   cd flask-tiny-app
+   ```
+2. **Chạy ứng dụng Flask**
+   ```bash
+   python app.py
+   ```
+. **Truy cập ứng dụng trên trình duyệt**
+   ```
+   http://127.0.0.1:5000
+   ```
+
+---
+
+**d. Link dự án đã triển khai**
+
+🔗 **Truy cập website tại:** [Flask Tiny App](https://flask-tiny-app-09a6.onrender.com) 🚀
