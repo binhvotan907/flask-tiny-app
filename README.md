@@ -39,7 +39,7 @@
    ```bash
    python app.py
    ```
-. **Truy cập ứng dụng trên trình duyệt**
+3. **Truy cập ứng dụng trên trình duyệt**
    ```
    http://127.0.0.1:5000
    ```
