@@ -49,3 +49,27 @@ def delete_note():
         "code": 200,
         "message": f"Đã xóa {deleted_count} ghi chú"
     })
+
+@views.route("/update-note", methods=["POST"])
+@login_required
+def update_note():
+    data = request.get_json()
+    note_id = data.get("note_id")
+    new_data = data.get("data")
+
+    if not note_id or not new_data:
+        return jsonify({"success": False, "message": "Thiếu thông tin ghi chú"}), 400
+
+    note = Note.query.get(note_id)
+    if not note or note.user_id != current_user.id:
+        return jsonify({"success": False, "message": "Ghi chú không hợp lệ hoặc không thuộc về bạn"}), 404
+
+    note.data = new_data.strip()
+    db.session.commit()
+    flash("Cập nhật ghi chú thành công!", category="success")
+
+    return jsonify({
+        "success": True,
+        "code": 200,
+        "message": "Đã cập nhật ghi chú"
+    })
