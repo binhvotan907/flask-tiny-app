@@ -1,54 +1,70 @@
 body {
-    background-color: #f8f9fa;
-    font-family: "Arial", sans-serif;
-  }
-  
-  .list-group-item {
-    transition: background 0.3s;
-  }
-  
-  .list-group-item:hover {
-    background: #f1f8ff !important; /* Màu xanh nhạt khi hover */
-  }
-  
-  .btn-danger {
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .btn-danger:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(229, 57, 53, 0.4);
-  }
-  
-  .form-control:focus {
-    border-color: #1e88e5;
-    box-shadow: 0 0 5px rgba(30, 136, 229, 0.5);
-  }
-  
-  .input-group-text {
-    background-color: #f1f8ff;
-    border: none;
-    color: #1e88e5;
-  }
-  
-  .form-control {
-    border-left: none;
-    transition: border-color 0.3s;
-  }
-  
-  .btn-primary {
-    background: linear-gradient(90deg, #1e88e5, #42a5f5);
-    border: none;
-    font-weight: 500;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4);
-    background: linear-gradient(90deg, #1976d2, #1e88e5);
-  }
-  
-  .navbar {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  background-color: #f8f9fa;
+  font-family: "Arial", sans-serif;
+}
+
+.list-group-item {
+  transition: background 0.3s;
+}
+
+.list-group-item:hover {
+  background: #f1f8ff !important; /* Màu xanh nhạt khi hover */
+}
+
+.btn-danger {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 57, 53, 0.4);
+}
+
+.form-control:focus {
+  border-color: #1e88e5;
+  box-shadow: 0 0 5px rgba(30, 136, 229, 0.5);
+}
+
+.input-group-text {
+  background-color: #f1f8ff;
+  border: none;
+  color: #1e88e5;
+}
+
+.form-control {
+  border-left: none;
+  transition: border-color 0.3s;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #1e88e5, #42a5f5);
+  border: none;
+  font-weight: 500;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4);
+  background: linear-gradient(90deg, #1976d2, #1e88e5);
+}
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination .page-item .page-link {
+  color: #1e88e5;
+  border-radius: 8px;
+  margin: 0 5px;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #1e88e5;
+  border-color: #1e88e5;
+  color: white;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #ccc;
+}

@@ -19,7 +19,16 @@ def home():
             db.session.commit()
             flash("Thêm ghi chú thành công!", category="success")
         return redirect(url_for('views.home'))
-    return render_template("index.html", user=current_user)
+
+    # Lấy số trang từ query string, mặc định là trang 1
+    page = request.args.get('page', 1, type=int)
+    per_page = 5  # Số ghi chú mỗi trang
+
+    # Truy vấn ghi chú của user hiện tại với phân trang
+    notes_query = Note.query.filter_by(user_id=current_user.id).order_by(Note.date.desc())
+    pagination = notes_query.paginate(page=page, per_page=per_page, error_out=False)
+
+    return render_template("index.html", user=current_user, notes=pagination.items, pagination=pagination)
 
 @views.route("/delete-note", methods=["POST"])
 @login_required
@@ -55,7 +64,7 @@ def delete_note():
 def update_note():
     data = request.get_json()
     note_id = data.get("note_id")
-    new_data = data.get("data")
+    new_data = data.get("new_data")
 
     if not note_id or not new_data:
         return jsonify({"success": False, "message": "Thiếu thông tin ghi chú"}), 400
