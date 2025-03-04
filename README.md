@@ -1,6 +1,7 @@
 # Flask Tiny App - ToDoList
-## 1. Tạo một github repo có tên flask-tiny-app
-## 2. Viết file Readme.MD chứa các thông tin sau:
+  
+### 1. Tạo một github repo có tên flask-tiny-app
+### 2. Viết file Readme.MD chứa các thông tin sau:
 **a. Thông tin cá nhân**
 
 👤 **Võ Tấn Bình** -  **MSSV: 22665691**  
@@ -24,11 +25,11 @@
 
 **c. Hướng dẫn cài đặt và chạy dự án**
 
-### 📌 Yêu cầu hệ thống
+#### 📌 Yêu cầu hệ thống
 - Python >= 3.8
 - Pip (trình quản lý package của Python)
 
-### 🛠 Cài đặt và chạy ứng dụng
+#### 🛠 Cài đặt và chạy ứng dụng
 
 1. **Clone repository về máy**
    ```bash
