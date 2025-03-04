@@ -17,7 +17,7 @@
 
 - 📝 **Đăng ký tài khoản**
 - 🔑 **Đăng nhập và quản lý tài khoản**
-- ✍️ **Thêm, xóa ghi chú**  
+- ✍️ **Thêm, xóa, chỉnh sửa ghi chú**  
 - 🎨 **Giao diện thân thiện và dễ sử dụng**
 
 Ứng dụng được phát triển bằng **Flask**, sử dụng **SQLite** làm cơ sở dữ liệu, đồng thời tích hợp giao diện thân thiện với **Bootstrap/TailwindCSS**.
