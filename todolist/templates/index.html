@@ -1,0 +1,120 @@
+{% extends "base.html" %} {% block title %}Trang chủ{% endblock %} {% block
+  content %}
+  <div
+    class="container"
+    style="
+      min-height: 80vh;
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      padding-top: 30px;
+      padding-bottom: 30px;
+    "
+  >
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h1
+          class="text-center mb-5"
+          style="
+            font-weight: 600;
+            color: #1e88e5;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          "
+        >
+          Ghi chú của bạn
+        </h1>
+  
+        <!-- Danh sách ghi chú -->
+        <ul
+          class="list-group shadow-lg"
+          id="notes"
+          style="border-radius: 15px; overflow: hidden"
+        >
+          {% if user.notes %} {% for note in user.notes %}
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+            style="
+              background: #ffffff;
+              border: none;
+              padding: 15px 20px;
+              transition: background 0.3s;
+            "
+          >
+            <span style="color: #333; font-size: 16px">{{ note.data }}</span>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              onclick="deleteNote({{ note.id }})"
+              style="
+                border-radius: 8px;
+                padding: 5px 10px;
+                transition: transform 0.2s;
+              "
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </li>
+          {% endfor %} {% else %}
+          <li
+            class="list-group-item text-center text-muted"
+            style="
+              background: #ffffff;
+              border: none;
+              padding: 20px;
+              font-style: italic;
+            "
+          >
+            Chưa có ghi chú nào! Hãy thêm một ghi chú mới.
+          </li>
+          {% endif %}
+        </ul>
+  
+        <!-- Form thêm ghi chú -->
+        <form
+          method="POST"
+          class="mt-5 shadow-lg p-4"
+          style="background: #ffffff; border-radius: 15px"
+        >
+          <div class="form-group mb-4">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text"
+                  style="background: #f1f8ff; border: none; color: #1e88e5"
+                  ><i class="fas fa-sticky-note"></i
+                ></span>
+              </div>
+              <textarea
+                name="note"
+                id="note"
+                class="form-control"
+                rows="3"
+                placeholder="Nhập ghi chú mới..."
+                required
+                style="
+                  border-left: none;
+                  border-radius: 0 8px 8px 0;
+                  resize: none;
+                "
+              ></textarea>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+  type="submit"
+              class="btn btn-primary"
+              style="
+                border-radius: 8px;
+                background: linear-gradient(90deg, #1e88e5, #42a5f5);
+                border: none;
+                padding: 10px 20px;
+                font-weight: 500;
+                transition: transform 0.2s, box-shadow 0.2s;
+              "
+            >
+              <i class="fas fa-plus mr-2"></i>Thêm ghi chú
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
