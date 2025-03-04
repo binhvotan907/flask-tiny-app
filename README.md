@@ -58,9 +58,9 @@
   
 ### 5. Thêm chức năng đăng nhập/ đăng ký (release version 2)
   
-### 6. Viết thêm một trang admin dùng để quán lý user. Admin có quyền khóa user (block) và reset mật khẩu cho user. Một user nếu bị block thì không thể truy cập vào tài khoản của mình. Website phải ### hiển thị thông báo, tài khoản của bạn đã bị khóa. (release version 3)
+### 6. Viết thêm một trang admin dùng để quán lý user. Admin có quyền khóa user (block) và reset mật khẩu cho user. Một user nếu bị block thì không thể truy cập vào tài khoản của mình. Website phải hiển thị thông báo, tài khoản của bạn đã bị khóa. (release version 3)
   
-### 7. Cho phép user có quyền quản lý bài viết (post) hoặc nhiệm vụ (task) của mình. Hãy chỉnh sữa mã để cho phép user có thể thực hiện thao tác xóa cùng lúc trên nhiều posts/ tasks cùng lúc ### ##(release version 4)
+### 7. Cho phép user có quyền quản lý bài viết (post) hoặc nhiệm vụ (task) của mình. Hãy chỉnh sữa mã để cho phép user có thể thực hiện thao tác xóa cùng lúc trên nhiều posts/ tasks cùng lúc (release version 4)
   
 ### 8. Hãy thêm nhiều dữ liệu để giả lập chức năng phân trang (pagination). Giả sử mặc định mỗi trang khi user đăng nhập chỉ hiển thị 10 posts/tasks (release version 5)
   
