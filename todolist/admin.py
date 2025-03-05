@@ -1,73 +1,56 @@
-from flask import Flask
-import os
-from dotenv import load_dotenv
-from flask_login import LoginManager, current_user
-from flask_sqlalchemy import SQLAlchemy
-from datetime import timedelta
-from werkzeug.security import generate_password_hash
+from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask_login import login_user, login_required, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
+from .models import User, db
+import random
+import string
 
-db = SQLAlchemy()
+admin_bp = Blueprint('admin', __name__)  # Đổi tên biến
 
-load_dotenv()
-SECRET_KEY = os.environ.get("KEY")
-DB_NAME = os.environ.get("DB_NAME")
 
-def create_database(app):
-    if not os.path.exists(DB_NAME):
-        with app.app_context():
-            db.create_all()
-        print("Created DB!")
+@admin_bp.route('/login', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        user = User.query.filter_by(email=email).first()
+        if user and check_password_hash(user.password, password) and user.is_admin:
+            login_user(user)
+            flash('Đăng nhập admin thành công!', 'success')
+            return redirect(url_for('admin.admin_users'))
+        flash('Email, mật khẩu không đúng hoặc bạn không phải admin!', 'error')
+    return render_template('admin_login.html', user=current_user)
 
-def create_admin():
-    """Tạo tài khoản admin mặc định nếu chưa tồn tại."""
-    from .models import User  # Import User để tránh lỗi vòng lặp
-    with db.session.begin():  # Dùng begin() để đảm bảo giao dịch
-        if not User.query.filter_by(email="admin@example.com").first():
-            admin_user = User(
-                email="admin@example.com",
-                user_name="admin",
-                password=generate_password_hash("admin123"),  # Đặt mật khẩu mặc định
-                is_admin=True
-            )
-            db.session.add(admin_user)
-            print("✅ Đã tạo admin mặc định thành công")
+@admin_bp.route('/users', methods=['GET'])
+@login_required
+def admin_users():
+    if not current_user.is_admin:
+        flash('Bạn không có quyền truy cập!', 'error')
+        return redirect(url_for('views.home'))
+    users = User.query.all()
+    return render_template('admin_users.html', users=users)
 
-def create_app():
-    app = Flask(__name__, template_folder='templates')
-    app.config["SECRET_KEY"] = SECRET_KEY
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  
+@admin_bp.route('/block_user/<int:user_id>', methods=['POST'])
+@login_required
+def block_user(user_id):
+    if not current_user.is_admin:
+        flash('Bạn không có quyền truy cập!', 'error')
+        return redirect(url_for('views.home'))
+    user = User.query.get_or_404(user_id)
+    user.is_blocked = not user.is_blocked
+    db.session.commit()
+    flash(f'Đã {"khóa" if user.is_blocked else "mở khóa"} tài khoản {user.user_name}!', 'success')
+    return redirect(url_for('admin.admin_users'))
 
-    db.init_app(app)
-
-    from .models import Note, User  
-
-    create_database(app)
-
-    # Đăng ký các blueprint
-    from .user import user
-    from .views import views
-    from .admin import admin_bp  
-
-    app.register_blueprint(user)
-    app.register_blueprint(views)
-    app.register_blueprint(admin_bp, url_prefix='/admin')  
-
-    login_manager = LoginManager()
-    login_manager.login_view = "user.login"
-    login_manager.init_app(app)
-    app.permanent_session_lifetime = timedelta(minutes=1)
-
-    @login_manager.user_loader
-    def load_user(id):
-        return User.query.get(int(id))
-
-    # Tạo tài khoản admin khi khởi động ứng dụng
-    with app.app_context():
-        create_admin()
-
-    @app.context_processor
-    def inject_user():
-        return dict(user=current_user)
-
-    return app
+@admin_bp.route('/reset_password/<int:user_id>', methods=['POST'])
+@login_required
+def reset_password(user_id):
+    if not current_user.is_admin:
+        flash('Bạn không có quyền truy cập!', 'error')
+        return redirect(url_for('views.home'))
+    user = User.query.get_or_404(user_id)
+    new_password = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
+    user.password = generate_password_hash(new_password)
+    db.session.commit()
+    flash(f'Mật khẩu mới cho {user.user_name}: {new_password}', 'success')
+    return redirect(url_for('admin.admin_users'))
