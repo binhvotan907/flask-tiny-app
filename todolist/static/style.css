@@ -68,3 +68,17 @@ body {
 .pagination .page-item.disabled .page-link {
   color: #ccc;
 }
+
+.table {
+  background: #ffffff;
+  border-radius: 15px;
+}
+.btn-warning {
+  background: linear-gradient(90deg, #ffca28, #ffeb3b);
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-warning:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 202, 40, 0.4);
+}

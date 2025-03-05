@@ -1,19 +1,10 @@
-from math import e
-from re import template
-from flask import Blueprint, render_template, request, flash, session
-from flask.helpers import url_for
-from sqlalchemy.sql.expression import false
-from werkzeug.utils import redirect
+from flask import Blueprint, render_template, request, flash, session, redirect, url_for
 from flask_login import login_user, login_required, logout_user, current_user
-from werkzeug.security import check_password_hash, generate_password_hash
-from datetime import timedelta
-from todolist import views
+from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User, Note
-
 from . import db
 
 user = Blueprint("user", __name__)
-
 
 @user.route("/login", methods=["GET", "POST"])
 def login():
@@ -22,6 +13,9 @@ def login():
         password = request.form.get("password")
         user = User.query.filter_by(email=email).first()
         if user:
+            if user.is_blocked:  # Kiểm tra trạng thái khóa
+                flash("Tài khoản của bạn đã bị khóa!", category="error")
+                return redirect(url_for("user.login"))
             if check_password_hash(user.password, password):
                 session.permanent = True
                 login_user(user, remember=True)
@@ -33,7 +27,6 @@ def login():
             flash("Người dùng không tồn tại!", category="error")
     return render_template("login.html", user=current_user)
 
-
 @user.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -43,30 +36,28 @@ def signup():
         confirm_password = request.form.get("confirm_password")
 
         user = User.query.filter_by(email=email).first()
-        # validate user
+        # Validate user
         if user:
             flash("Người dùng đã tồn tại!", category="error")
         elif len(email) < 4:
             flash("Email phải lớn hơn 3 ký tự.", category="error")
         elif len(password) < 7:
-            flash("Email phải lớn hơn 7 ký tự.", category="error")
+            flash("Mật khẩu phải lớn hơn 7 ký tự.", category="error")  # Sửa lỗi thông báo
         elif password != confirm_password:
             flash("Mật khẩu không khớp!", category="error")
         else:
-            password = generate_password_hash(password, method="pbkdf2:sha256") 
-
+            password = generate_password_hash(password, method="pbkdf2:sha256")
             new_user = User(email=email, password=password, user_name=user_name)
             try:
                 db.session.add(new_user)
                 db.session.commit()
-                flash("Đăng kí người dùng thành công!", category="success")
-                login_user(new_user, remember=True)  # Sửa user thành new_user
+                flash("Đăng ký người dùng thành công!", category="success")
+                login_user(new_user, remember=True)
                 return redirect(url_for("views.home"))
             except Exception as e:
-                 flash(f"Lỗi khi tạo người dùng: {str(e)}", category="error")
+                flash(f"Lỗi khi tạo người dùng: {str(e)}", category="error")
 
     return render_template("signup.html", user=current_user)
-
 
 @user.route("/logout")
 @login_required

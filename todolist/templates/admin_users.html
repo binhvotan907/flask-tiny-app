@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block title %}Quản lý người dùng{% endblock %} {%
+block content %}
+<div
+  class="container"
+  style="
+    min-height: 80vh;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    padding-top: 30px;
+    padding-bottom: 30px;
+  "
+>
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h1
+        class="text-center mb-5"
+        style="
+          font-weight: 600;
+          color: #1e88e5;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        "
+      >
+        Quản lý người dùng
+      </h1>
+      <table
+        class="table table-striped shadow-lg"
+        style="background: #ffffff; border-radius: 15px"
+      >
+        <thead class="thead-dark">
+          <tr>
+            <th>Email</th>
+            <th>Tên người dùng</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{ user.email }}</td>
+            <td>{{ user.user_name }}</td>
+            <td>{{ "Khóa" if user.is_blocked else "Hoạt động" }}</td>
+            <td>
+              <form
+                method="POST"
+                action="/admin/block_user/{{ user.id }}"
+                style="display: inline"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-sm {{ 'btn-danger' if not user.is_blocked else 'btn-success' }}"
+                  style="border-radius: 8px"
+                >
+                  <i
+                    class="fas {{ 'fa-lock' if not user.is_blocked else 'fa-unlock' }} mr-1"
+                  ></i>
+                  {{ "Khóa" if not user.is_blocked else "Mở khóa" }}
+                </button>
+              </form>
+              <form
+                method="POST"
+                action="/admin/reset_password/{{ user.id }}"
+                style="display: inline"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-sm btn-warning ml-2"
+                  style="border-radius: 8px"
+                >
+                  <i class="fas fa-key mr-1"></i>Reset mật khẩu
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
