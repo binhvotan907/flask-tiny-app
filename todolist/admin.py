@@ -30,7 +30,7 @@ def create_admin():
                 is_admin=True
             )
             db.session.add(admin_user)
-            print("✅ Created default admin user!")
+            print("✅ Đã tạo admin mặc định thành công")
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
