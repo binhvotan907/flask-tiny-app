@@ -30,6 +30,7 @@ def home():
 
     return render_template("index.html", user=current_user, notes=pagination.items, pagination=pagination)
 
+
 @views.route("/delete-note", methods=["POST"])
 @login_required
 def delete_note():
@@ -75,10 +76,10 @@ def update_note():
 
     note.data = new_data.strip()
     db.session.commit()
-    flash("Cập nhật ghi chú thành công!", category="success")
+    #flash("Cập nhật ghi chú thành công!", category="success")
 
     return jsonify({
         "success": True,
         "code": 200,
-        "message": "Đã cập nhật ghi chú"
+        "message": "Đã cập nhật ghi chú thành công!"
     })
