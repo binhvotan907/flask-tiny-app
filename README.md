@@ -70,3 +70,8 @@
  - Bước 2: Mở cmd chạy lệnh **install.bat**
   
 ### 10. Sử dụng docker để đóng gói ứng dụng của bạn
+ Sau khi tải toàn bộ file về để có thể chạy trên docker, ta cần làm các bước sau:
+ - Bước 1: Chạy lệnh **docker build -t flask-todolist .** để built docker image
+ - Bước 2: Chạy lệnh **docker run -d -p 5000:5000 --name flask-todolist flask-todolist** để chạy container 
+   
+
