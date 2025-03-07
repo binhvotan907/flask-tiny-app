@@ -5,7 +5,7 @@ from .models import User, db
 import random
 import string
 
-admin_bp = Blueprint('admin', __name__)  # Đổi tên biến
+admin_bp = Blueprint('admin', __name__)  
 
 
 @admin_bp.route('/login', methods=['GET', 'POST'])
@@ -16,9 +16,9 @@ def admin_login():
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password) and user.is_admin:
             login_user(user)
-            flash('Đăng nhập admin thành công!', 'success')
+            flash('Đăng nhập admin thành công', 'success')
             return redirect(url_for('admin.admin_users'))
-        flash('Email, mật khẩu không đúng hoặc bạn không phải admin!', 'error')
+        flash('Email, mật khẩu không đúng hoặc bạn không phải admin', 'error')
     return render_template('admin_login.html', user=current_user)
 
 @admin_bp.route('/users', methods=['GET'])
