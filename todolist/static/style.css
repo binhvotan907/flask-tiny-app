@@ -1,62 +1,75 @@
+/* Tổng thể */
 body {
-  background-color: #f8f9fa;
+  background-color: #f4f6f8;
   font-family: "Arial", sans-serif;
 }
 
+/* Danh sách */
 .list-group-item {
-  transition: background 0.3s;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+  border-radius: 5px;
 }
 
 .list-group-item:hover {
-  background: #f1f8ff !important; /* Màu xanh nhạt khi hover */
+  background: #e3f2fd !important;
+  transform: scale(1.02);
 }
 
+/* Nút nguy hiểm */
 .btn-danger {
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .btn-danger:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(229, 57, 53, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(229, 57, 53, 0.5);
 }
 
+/* Ô nhập liệu */
 .form-control:focus {
   border-color: #1e88e5;
-  box-shadow: 0 0 5px rgba(30, 136, 229, 0.5);
+  box-shadow: 0 0 8px rgba(30, 136, 229, 0.6);
 }
 
 .input-group-text {
-  background-color: #f1f8ff;
+  background-color: #e3f2fd;
   border: none;
-  color: #1e88e5;
+  color: #1565c0;
+  font-weight: 600;
 }
 
+/* Ô nhập liệu không có viền trái */
 .form-control {
   border-left: none;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s ease-in-out;
 }
 
+/* Nút chính */
 .btn-primary {
-  background: linear-gradient(90deg, #1e88e5, #42a5f5);
+  background: linear-gradient(135deg, #1e88e5, #42a5f5);
   border: none;
-  font-weight: 500;
-  transition: transform 0.2s, box-shadow 0.2s;
+  font-weight: 600;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4);
-  background: linear-gradient(90deg, #1976d2, #1e88e5);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(30, 136, 229, 0.5);
+  background: linear-gradient(135deg, #1976d2, #1e88e5);
 }
 
+/* Thanh điều hướng */
 .navbar {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
 
+/* Phân trang */
 .pagination .page-item .page-link {
   color: #1e88e5;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
 }
 
 .pagination .page-item.active .page-link {
@@ -67,5 +80,6 @@ body {
 
 .pagination .page-item .page-link:hover {
   background-color: #bbdefb;
-  color: #1e88e5;
+  color: #0d47a1;
+  transform: scale(1.1);
 }
