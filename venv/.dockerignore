@@ -1,0 +1,8 @@
+#  loại bỏ các file không cần thiết khi copy vào container.
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+todolist.db
+.env
