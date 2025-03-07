@@ -50,7 +50,7 @@
 
 **d. Link dự án đã triển khai**
 
-🔗 **Truy cập website tại:** [Flask Tiny App](https://flask-tiny-app-09a6.onrender.com) 🚀
+🔗 **Truy cập website tại:** [Flask Tiny App](https://flask-tiny-app-1.onrender.com)
 
 ### 3. Tạo một thư mục docs trong đó có chứa các file v1.md, v2.md, v3.md.... ghi lại các thay đổi và screenshots của mỗi phiên bản phát hành (release version)
   
