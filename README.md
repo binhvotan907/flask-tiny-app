@@ -16,7 +16,8 @@
 **🚀 Tính năng**
 
 - 📝 **Đăng ký tài khoản**
-- 🔑 **Đăng nhập và quản lý tài khoản**
+- 🔑 **Đăng nhập**
+- 📌 **Trang admin: quản lý tài khoản users, khóa, reset mật khẩu user** 
 - ✍️ **Thêm, xóa, chỉnh sửa ghi chú**  
 - 🎨 **Giao diện thân thiện và dễ sử dụng**
 
