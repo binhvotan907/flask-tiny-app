@@ -65,5 +65,8 @@
 ### 8. Hãy thêm nhiều dữ liệu để giả lập chức năng phân trang (pagination). Giả sử mặc định mỗi trang khi user đăng nhập chỉ hiển thị 10 posts/tasks (release version 5)
   
 ### 9. Viết terminal script (batch script/ shell script/ bash script/ zsh script) để có thể cài đặt toàn bộ project của các bạn.
+ Sau khi tải toàn  bộ file về để có thể cài đặt toàn bộ project ta thực hiện như sau: 
+ - Bước 1: Di chuyển vào thư mục project
+ - Bước 2: Mở cmd chạy lệnh **install.bat**
   
 ### 10. Sử dụng docker để đóng gói ứng dụng của bạn
