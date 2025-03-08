@@ -18,7 +18,7 @@
 - 📝 **Đăng ký tài khoản**
 - 🔑 **Đăng nhập**
 - 📌 **Trang admin: quản lý tài khoản users, khóa, reset mật khẩu user** 
-- ✍️ **Thêm, xóa, chỉnh sửa, phân trangtrang ghi chú**  
+- ✍️ **Thêm, xóa, chỉnh sửa, phân trang ghi chú**  
 - 🎨 **Giao diện thân thiện và dễ sử dụng**
 
 Ứng dụng được phát triển bằng **Flask**, sử dụng **SQLite** làm cơ sở dữ liệu, đồng thời tích hợp giao diện thân thiện với **Bootstrap/TailwindCSS**.
